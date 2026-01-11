@@ -1,39 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Aadhaar Services</title>
+  <meta charset="UTF-8">
+  <title>UIDAI Dashboard</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body onload="checkLogin()">
+<body onload="checkLogin(); loadLanguage();">
 
-<div class="header">
-  <h1>Smart Aadhaar Center</h1>
-  <p>Citizen Services Portal</p>
-</div>
-
-<div class="login-box">
-  <h2>Select Service</h2>
-
-  <button onclick="openPhone('update')">Update Aadhaar</button>
-  <br><br>
-  <button onclick="openPhone('fresh')">Fresh Aadhaar Apply</button>
-</div>
-
-<!-- PHONE NUMBER POPUP -->
-<div class="modal" id="phoneModal">
-  <div class="modal-box">
-    <h3>Applicant Mobile Number</h3>
-    <input type="text" placeholder="Enter Mobile Number">
-    <br><br>
-    <button onclick="openService()">Proceed</button>
+  <div class="header">
+    <h1 id="dashTitle">Smart Aadhaar Center Dashboard</h1>
+    <p id="dashSub">Centralized Monitoring System</p>
   </div>
-</div>
 
-<!-- SERVICE OPTIONS -->
-<div class="modal" id="serviceModal">
-  <div class="modal-box" id="serviceContent"></div>
-</div>
+  <div class="login-box">
+    <p id="status"></p>
+    <p id="centers"></p>
+    <p id="devices"></p>
+    <p id="iot"></p>
 
-<script src="script.js"></script>
+    <p id="time"></p>
+
+    <button onclick="logout()" id="logoutBtn">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
