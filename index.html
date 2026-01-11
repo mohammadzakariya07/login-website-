@@ -2,20 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login Page</title>
+  <title>Smart Aadhaar Center Login</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="login-box">
-    <h2>Login</h2>
+  <div class="header">
+    <h1>UIDAI</h1>
+    <p>Smart Aadhaar Center Monitoring System</p>
+  </div>
 
-    <input type="text" id="username" placeholder="Username">
+  <div class="login-box">
+    <h2>Authorized Login</h2>
+
+    <input type="text" id="username" placeholder="Operator ID">
     <input type="password" id="password" placeholder="Password">
 
-    <button onclick="login()">Login</button>
+    <button onclick="login()">Secure Login</button>
 
     <p id="error"></p>
+
+    <p class="info">
+      🔐 For authorized UIDAI officials only  
+      <br>🌐 Centralized access from anywhere
+    </p>
   </div>
 
   <script src="script.js"></script>
