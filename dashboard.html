@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-</head>
 <body onload="checkLogin()">
 
+  <div class="header">
+    <h1>Smart Aadhaar Center Dashboard</h1>
+    <p>Centralized Monitoring | UIDAI</p>
+  </div>
+
   <div class="login-box">
-    <h1>Welcome 🎉</h1>
-    <p>Login Successful</p>
+    <p><b>System Status:</b> Online 🟢</p>
+    <p><b>Centers Connected:</b> Nationwide</p>
+    <p><b>Biometric Devices:</b> Active</p>
+    <p><b>IoT Nodes:</b> ESP-Based Units</p>
+
+    <p id="time"></p>
 
     <button onclick="logout()">Logout</button>
   </div>
@@ -25,6 +27,14 @@
       localStorage.removeItem("loggedIn");
       window.location.href = "index.html";
     }
+
+    function updateTime() {
+      document.getElementById("time").innerHTML =
+        "<b>Last Updated:</b> " + new Date().toLocaleString();
+    }
+
+    updateTime();
+    setInterval(updateTime, 5000);
   </script>
+
 </body>
-</html>
