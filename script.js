@@ -107,3 +107,119 @@ function logout() {
   localStorage.removeItem("loggedIn");
   window.location.href = "index.html";
 }
+
+let mode = "";
+
+function openPhone(type) {
+  mode = type;
+  document.getElementById("phoneModal").style.display = "block";
+}
+
+function openService() {
+  document.getElementById("phoneModal").style.display = "none";
+  document.getElementById("serviceModal").style.display = "block";
+
+  if (mode === "update") loadUpdateOptions();
+  else loadFreshForm();
+}
+
+/* UPDATE AADHAAR FLOW */
+function loadUpdateOptions() {
+  document.getElementById("serviceContent").innerHTML = `
+    <h3>Update Aadhaar Details</h3>
+    <button onclick="updateName()">1. Update Name</button><br><br>
+    <button onclick="updateGender()">2. Update Gender</button><br><br>
+    <button onclick="updateAddress()">3. Update Address</button><br><br>
+    <button onclick="updateMobile()">4. Update Mobile</button><br><br>
+    <button onclick="updateEmail()">5. Update Email</button><br><br>
+    <button onclick="updateBio()">6. Update Biometrics</button><br><br>
+    <button onclick="updateAll()">7. Update All</button>
+  `;
+}
+
+/* INDIVIDUAL WINDOWS */
+function updateName() {
+  showForm("Update Name", `
+    Current Name <input>
+    Updated Name <input>
+  `);
+}
+
+function updateGender() {
+  showForm("Update Gender", `
+    Current Gender <select>
+      <option>Male</option><option>Female</option>
+      <option>Transgender</option><option>Other</option>
+    </select>
+    Updated Gender <select>
+      <option>Male</option><option>Female</option>
+      <option>Transgender</option><option>Other</option>
+    </select>
+  `);
+}
+
+function updateAddress() {
+  showForm("Update Address", `
+    Current Address <input>
+    Updated Address <input>
+  `);
+}
+
+function updateMobile() {
+  showForm("Update Mobile", `
+    Current Mobile (or N) <input>
+    Updated Mobile <input>
+  `);
+}
+
+function updateEmail() {
+  showForm("Update Email", `
+    Current Email (or N) <input>
+    Updated Email <input>
+  `);
+}
+
+function updateBio() {
+  showForm("Update Biometrics", `
+    <input type="checkbox"> Fingerprint<br>
+    <input type="checkbox"> Iris<br>
+    <input type="checkbox"> Photograph
+  `);
+}
+
+function updateAll() {
+  updateAddress();
+}
+
+/* FRESH AADHAAR FORM */
+function loadFreshForm() {
+  document.getElementById("serviceContent").innerHTML = `
+    <h3>Fresh Aadhaar Application</h3>
+    Name <input>
+    Gender <select>
+      <option>Male</option><option>Female</option>
+      <option>Transgender</option><option>Other</option>
+    </select>
+    Address <input>
+    Mobile <input>
+    Email <input>
+    <br><br>
+    <button onclick="uploadDocs()">Next</button>
+  `;
+}
+
+/* DOCUMENT UPLOAD */
+function uploadDocs() {
+  showForm("Upload Required Documents (Single PDF)", `
+    <input type="file" accept="application/pdf">
+  `);
+}
+
+function showForm(title, fields) {
+  document.getElementById("serviceContent").innerHTML = `
+    <h3>${title}</h3>
+    ${fields}
+    <br><br>
+    <button onclick="uploadDocs()">Continue</button>
+  `;
+}
