@@ -1,40 +1,28 @@
-<body onload="checkLogin()">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UIDAI Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="checkLogin(); loadLanguage();">
 
   <div class="header">
-    <h1>Smart Aadhaar Center Dashboard</h1>
-    <p>Centralized Monitoring | UIDAI</p>
+    <h1 id="dashTitle">Smart Aadhaar Center Dashboard</h1>
+    <p id="dashSub">Centralized Monitoring System</p>
   </div>
 
   <div class="login-box">
-    <p><b>System Status:</b> Online 🟢</p>
-    <p><b>Centers Connected:</b> Nationwide</p>
-    <p><b>Biometric Devices:</b> Active</p>
-    <p><b>IoT Nodes:</b> ESP-Based Units</p>
+    <p id="status"></p>
+    <p id="centers"></p>
+    <p id="devices"></p>
+    <p id="iot"></p>
 
     <p id="time"></p>
 
-    <button onclick="logout()">Logout</button>
+    <button onclick="logout()" id="logoutBtn">Logout</button>
   </div>
 
-  <script>
-    function checkLogin() {
-      if (localStorage.getItem("loggedIn") !== "true") {
-        window.location.href = "index.html";
-      }
-    }
-
-    function logout() {
-      localStorage.removeItem("loggedIn");
-      window.location.href = "index.html";
-    }
-
-    function updateTime() {
-      document.getElementById("time").innerHTML =
-        "<b>Last Updated:</b> " + new Date().toLocaleString();
-    }
-
-    updateTime();
-    setInterval(updateTime, 5000);
-  </script>
-
+  <script src="script.js"></script>
 </body>
+</html>
